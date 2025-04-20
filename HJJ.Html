@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Karaan 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: #0d0d0d; /* Solid black background */
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      color: #ff7eb3; /* Pink color for highlights */
+      margin-top: 1rem;
+    }
+
+    .message {
+      max-width: 700px;
+      margin: 2rem auto 3rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.8rem;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(255, 126, 179, 0.5);
+      line-height: 1.6;
+    }
+
+    .message p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .form-section {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px rgba(255, 126, 179, 0.3);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background: #222;
+      color: #fff;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
+    }
+
+    button {
+      background: #ff7eb3;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .music-control {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      color: white;
+      z-index: 10;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .message, .form-section {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="music-control" onclick="toggleMusic()">🎵</div>
+  <audio id="bgMusic" loop autoplay>
+    <source src="https://www.bensound.com/bensound-music/bensound-birthday.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>Happy Birthday Karaan 🎂</h1>
+
+  <div class="message">
+    <p>🎉🎈 Dear Karaan,</p>
+    <p>
+      Wishing you a day as incredible as you are! You’ve brought joy, laughter, and good vibes wherever you go — and today, it’s all about celebrating you. 🎂🕯️
+    </p>
+    <p>
+      May your year ahead be filled with success, love, epic memories, and all the things you dream of. You’re one of the real ones, and you deserve the absolute best. 💫
+    </p>
+    <p>Now... go ahead and tell me what you want this birthday 👇</p>
+  </div>
+
+  <div class="form-section">
+    <h2>🎁 Your Birthday Wish List</h2>
+    <form action="https://formspree.io/f/xeoayble" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <textarea name="wish" rows="5" placeholder="What do you want for your birthday?" required></textarea>
+      <input type="hidden" name="ip" id="ipField" />
+      <button type="submit">Submit Your Wish ✨</button>
+    </form>
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById('bgMusic');
+    function toggleMusic() {
+      if (bgMusic.paused) {
+        bgMusic.play();
+      } else {
+        bgMusic.pause();
+      }
+    }
+
+    // IP Address fetcher
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ipField').value = data.ip;
+      });
+  </script>
+
+</body>
+</html>
